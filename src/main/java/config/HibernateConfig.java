@@ -14,12 +14,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan("java")
+@ComponentScan(basePackages = {"config", "dao", "service", "controller"})
 public class HibernateConfig {
 
     @Autowired
@@ -28,7 +29,7 @@ public class HibernateConfig {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource driverMDS = new DriverManagerDataSource();
-        driverMDS.setDriverClassName(env.getProperty("db.driver"));
+        driverMDS.setDriverClassName(Objects.requireNonNull(env.getProperty("db.driver")));
         driverMDS.setUrl(env.getProperty("db.url"));
         driverMDS.setUsername(env.getProperty("db.username"));
         driverMDS.setPassword(env.getProperty("db.password"));
@@ -40,12 +41,13 @@ public class HibernateConfig {
         LocalContainerEntityManagerFactoryBean entityManager =
                 new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(getDataSource());
-        entityManager.setPackagesToScan("java");
+        entityManager.setPackagesToScan("model");
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties prop = new Properties();
         prop.put("hibernate.show.sql", env.getProperty("hibernate.show.sql"));
         prop.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        prop.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
         entityManager.setJpaProperties(prop);
         return entityManager;

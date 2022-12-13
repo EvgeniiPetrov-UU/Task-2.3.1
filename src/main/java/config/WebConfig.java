@@ -13,7 +13,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("java")
+@ComponentScan(basePackages = {"config", "dao", "service", "controller"})
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext context;
@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(context);
-        resolver.setPrefix("/WEB-INF/pages");
+        resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".html");
         return resolver;
     }

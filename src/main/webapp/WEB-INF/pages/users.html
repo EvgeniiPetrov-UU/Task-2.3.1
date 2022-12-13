@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<!--<div>-->
+<!--    <form th:method="POST" th:action="@{/}" th:object="${newUser}">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td>Name</td>-->
+<!--                <td>-->
+<!--                    <input type="text" th:field="*{name}" id="name"/>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>LastName</td>-->
+<!--                <td>-->
+<!--                    <input type="text" th:field="*{lastName}" id="lastName"/>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Age</td>-->
+<!--                <td>-->
+<!--                    <input type="number" th:field="*{age}" id="age"/>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="2">-->
+<!--                    <button type="submit">Save</button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+<!--</div>-->
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Age</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.getId()}"></td>
+            <td th:utext="${user.getName()}"></td>
+            <td th:utext="${user.getLastName}"></td>
+            <td th:utext="${user.getAge}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

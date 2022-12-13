@@ -1,10 +1,9 @@
 package dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import model.User;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,17 +24,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void editUserById(Long id, User user) {
-        User editedUser = getUserById(id);
-        editedUser.setName(user.getName());
-        editedUser.setLastName(user.getLastName());
-        editedUser.setAge(user.getAge());
-        entityManager.refresh(editedUser);
+    public void editUserById(User user, Long id) {
+        entityManager.refresh(user);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return entityManager.createQuery("from users", User.class).getResultList();
+        return entityManager.createQuery("SELECT n FROM User n", User.class).getResultList();
     }
 
     @Override

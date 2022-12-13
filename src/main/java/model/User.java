@@ -1,9 +1,9 @@
 package model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -11,7 +11,7 @@ public class User {
     private Long id;
     private String name;
     private String lastName;
-    private byte age;
+    private int age;
 
     public User() {
 
@@ -47,7 +47,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return age;
     }
 
