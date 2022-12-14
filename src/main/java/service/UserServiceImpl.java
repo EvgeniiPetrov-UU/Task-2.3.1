@@ -17,17 +17,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(User user) {
-        userDao.saveUser(user);
+        if (user.getId() == 0) {
+            userDao.saveUser(user);
+        } else {
+            editUser(user);
+        }
     }
 
     @Override
-    public void deleteUserById(Long id) {
+    public void deleteUserById(int id) {
         userDao.deleteUserById(id);
     }
 
     @Override
-    public void editUserById(User user, Long id) {
-        userDao.editUserById(user, id);
+    public void editUser(User user) {
+        userDao.editUser(user);
     }
 
     @Override
@@ -36,7 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(int id) {
         return userDao.getUserById(id);
     }
 }

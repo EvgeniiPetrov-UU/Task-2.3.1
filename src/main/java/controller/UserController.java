@@ -19,21 +19,29 @@ public class UserController {
         return "users";
     }
 
-//    @PostMapping("/new")
-//    public String saveUser(@ModelAttribute("newUser") User user) {
-//        userService.saveUser(user);
-//        return "users";
-//    }
+    @PostMapping("/")
+    public String saveUser(@ModelAttribute("newUser") User user) {
+        userService.saveUser(user);
+        return "redirect:/";
+    }
 
-//    @DeleteMapping(value = "/delete")
-//    public String deleteUser(@RequestParam(value = "userId") Long id) {
-//        userService.deleteUserById(id);
-//        return "redirect:/users";
-//    }
+    @DeleteMapping(value = "/delete")
+    public String deleteUser(@RequestParam("userId") int id) {
+        userService.deleteUserById(id);
+        return "redirect:/";
+    }
 
-//    @PatchMapping(value = "/edit")
-//    public String editUser((@RequestParam(value = "userId") Long id, @ModelAttribute(value = "editedUser") User editedUser) {
-//        userService.editUserById(editedUser);
-//        return "editUser";
-//    }
+    @GetMapping("/new")
+    public String getNewUserTemplate(Model model) {
+        User user = new User();
+        model.addAttribute("newUser", user);
+        return "createUser";
+    }
+
+    @GetMapping("/edit")
+    public String editUser(@RequestParam int id, Model model) {
+        User editedUser = userService.getUserById(id);
+        model.addAttribute("newUser", editedUser);
+        return "createUser";
+    }
 }

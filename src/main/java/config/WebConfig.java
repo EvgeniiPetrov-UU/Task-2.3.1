@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(context);
-        resolver.setPrefix("/WEB-INF/pages/");
+        resolver.setPrefix("/WEB-INF/templates/");
         resolver.setSuffix(".html");
         return resolver;
     }
