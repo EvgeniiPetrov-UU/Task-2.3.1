@@ -21,7 +21,11 @@ public class UserController {
 
     @PostMapping("/")
     public String saveUser(@ModelAttribute("newUser") User user) {
-        userService.saveUser(user);
+        if (userService.getUserById(user.getId()) == null) {
+            userService.saveUser(user);
+        } else {
+            userService.editUser(user);
+        }
         return "redirect:/";
     }
 

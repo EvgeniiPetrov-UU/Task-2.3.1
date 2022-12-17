@@ -17,11 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(User user) {
-        if (user.getId() == 0) {
-            userDao.saveUser(user);
-        } else {
-            editUser(user);
-        }
+        userDao.saveUser(user);
     }
 
     @Override

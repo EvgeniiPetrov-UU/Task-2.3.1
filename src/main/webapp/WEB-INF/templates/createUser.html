@@ -8,15 +8,15 @@
 <form th:method="POST" th:action="@{/}" th:object="${newUser}">
   <div class="field">
     <label for="name">Name</label>
-    <input type="text" id="name" th:field="*{name}" />
+    <input type="text" id="name" th:field="*{name}"/>
   </div>
   <div class="field">
     <label for="lastName">Lastname</label>
-    <input type="text" id="lastName" th:field="*{lastName}" />
+    <input type="text" id="lastName" th:field="*{lastName}"/>
   </div>
   <div class="field">
     <label for="age">Age</label>
-    <input type="number" id="age" th:field="*{age}" />
+    <input type="number" id="age" th:field="*{age}"/>
   </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
