@@ -9,22 +9,24 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDao;
 
+    @Transactional
     @Override
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
+    @Transactional
     @Override
     public void deleteUserById(int id) {
         userDao.deleteUserById(id);
     }
 
+    @Transactional
     @Override
     public void editUser(User user) {
         userDao.editUser(user);

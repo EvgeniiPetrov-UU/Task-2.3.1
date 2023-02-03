@@ -21,16 +21,12 @@ public class UserController {
 
     @PostMapping("/")
     public String saveUser(@ModelAttribute("newUser") User user) {
-        if (userService.getUserById(user.getId()) == null) {
-            userService.saveUser(user);
-        } else {
-            userService.editUser(user);
-        }
+        userService.saveUser(user);
         return "redirect:/";
     }
 
     @DeleteMapping(value = "/delete")
-    public String deleteUser(@RequestParam("userId") int id) {
+    public String deleteUser(@RequestParam("userToRemoveId") int id) {
         userService.deleteUserById(id);
         return "redirect:/";
     }
@@ -43,9 +39,9 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String editUser(@RequestParam int id, Model model) {
+    public String editUser(@RequestParam("userToEditId") int id, Model model) {
         User editedUser = userService.getUserById(id);
-        model.addAttribute("newUser", editedUser);
-        return "createUser";
+        model.addAttribute("editedUser", editedUser);
+        return "editUser";
     }
 }
