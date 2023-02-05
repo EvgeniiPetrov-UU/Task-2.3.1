@@ -2,10 +2,10 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create new User</title>
+    <title>Edit existing user</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/}" th:object="${newUser}">
+<form th:method="PUT" th:action="@{/}" th:object="${editedUser}">
     <div class="field">
         <label for="name">Name</label>
         <input type="text" id="name" th:field="*{name}"/>
@@ -18,7 +18,7 @@
         <label for="age">Age</label>
         <input type="number" id="age" th:field="*{age}"/>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 </body>
 </html>

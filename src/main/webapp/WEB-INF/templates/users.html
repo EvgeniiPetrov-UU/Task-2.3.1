@@ -30,9 +30,9 @@
                 </form>
             </td>
             <td>
-                <form th:method="GET" th:action="@{/edit(userToEditId=${user.getId()})}">
-                    <input type="submit" value="Edit"/>
-                </form>
+                <a th:href="@{/edit(userToEditId=${user.getId()})}">
+                    <button>Edit</button>
+                </a>
             </td>
         </tr>
         </tbody>
