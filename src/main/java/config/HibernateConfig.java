@@ -23,8 +23,11 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"config", "dao", "service", "controller"})
 public class HibernateConfig {
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
+
+    public HibernateConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public DataSource getDataSource() {
