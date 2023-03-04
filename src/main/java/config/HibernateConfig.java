@@ -51,6 +51,12 @@ public class HibernateConfig {
         prop.put("hibernate.show.sql", env.getProperty("hibernate.show.sql"));
         prop.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         prop.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        prop.put("hibernate.connection.characterEncoding",
+                env.getProperty("hibernate.connection.characterEncoding"));
+        prop.put("hibernate.connection.CharSet",
+                env.getProperty("hibernate.connection.CharSet"));
+        prop.put("hibernate.connection.useUnicode",
+                env.getProperty("hibernate.connection.useUnicode"));
 
         entityManager.setJpaProperties(prop);
         return entityManager;
